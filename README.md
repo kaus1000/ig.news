@@ -1,10 +1,10 @@
 <br />
 <br />
 <h1 align="center">
-  <img alt="ignews" src=".github/assets/logo.svg" width="420px" /> 
+  <img alt="ignite" src="./assets/logo.svg" width="420px" /> 
   <br />
   <br />
-  Next | React | Typescript | SASS| FaunaDB | Stripe  
+  Next | React | Typescript | SASS | FaunaDB | Stripe | NextAuth | OAuth
 </h1>
 
 <p align="center">
@@ -17,12 +17,13 @@
 ## :bookmark: Resumo
 <br />
 
-![Pagina inicial](https://user-images.githubusercontent.com/66697772/152630644-eb0eccfe-8c5a-46b9-961b-f17818a8d8ac.png)
-![modal](https://user-images.githubusercontent.com/66697772/152630649-3de6afaa-af52-4e6b-aef2-75484b12b3b5.png)
+![preview](https://user-images.githubusercontent.com/66697772/158461610-2093bab7-a7a0-4454-bbfe-eda8229c33aa.png)
+![post](https://user-images.githubusercontent.com/66697772/158461835-03c04e44-c4e3-4f8f-bc6b-df50488e4e07.png)
+![posts](https://user-images.githubusercontent.com/66697772/158462225-7c1f95e6-e645-454b-8e31-950d08d6b6d6.png)
 
 
 
-Projeto desenvolvido pela trilha ReactJS da RocketSeat com o proposito de práticar conceitos aprendidos em aula, que consiste em, um projeto para controlar a entrada e saida de suas finanças.
+Projeto desenvolvido pela trilha ReactJS da RocketSeat com o proposito de práticar conceitos aprendidos em aula, que consiste em, um projeto para consumo de informações via posts. Com sistema de mensalidade incluso, com sistema de pagamento integrado via API do STRIPE. Aplicações utilizando conceitos SSR via next.js e faunaDB para aplicações serveless.
 
 <br />
 
@@ -35,10 +36,13 @@ Projeto desenvolvido pela trilha ReactJS da RocketSeat com o proposito de práti
 <br />
 
 - Typescript
-- ReactJS
-- MirageJS
-- Styled Components
-
+- React.JS
+- Next.JS
+- SASS
+- NextAuth
+- FaunaDB
+- Stripe
+- OAuth
 
 <br />
 
