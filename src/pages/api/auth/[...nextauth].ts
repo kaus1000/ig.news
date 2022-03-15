@@ -1,21 +1,18 @@
 import NextAuth from "next-auth";
+import {query as q} from 'faunadb';
 import GithubProvider from "next-auth/providers/github";
-
-import { query as q } from "faunadb";
-import { fauna } from "../../../services/fauna";
+import {fauna} from '../../../services/fauna';
 
 export default NextAuth({
-    secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      authorization: { params: { scope: "read:user" } },
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
     }),
-    // ...add more providers here
   ],
   callbacks: {
-    async session({session}) {
+    async session({session}){
       try {
         const userActiveSubscription = await fauna.query(
           q.Get(
@@ -39,19 +36,21 @@ export default NextAuth({
             ])
           )
         )
-  
+
         return {
           ...session,
           activeSubscription: userActiveSubscription
-        }
-      } catch (err){
+        };
+
+      } catch(err) {
+        console.error(err);
         return {
           ...session,
           activeSubscription: null
-        }
+        };
       }
     },
-    async signIn({ user, account, profile }) {
+    async signIn({ user }){
       const { email } = user;
 
       try {
@@ -61,26 +60,26 @@ export default NextAuth({
               q.Exists(
                 q.Match(
                   q.Index('user_by_email'),
-                  q.Casefold(user.email)
+                  q.Casefold(email)
                 )
               )
             ),
             q.Create(
               q.Collection('users'),
-              {data:{email}}
-            ), 
+              {data: { email }}
+            ),
             q.Get(
               q.Match(
                 q.Index('user_by_email'),
-                q.Casefold(user.email)
+                q.Casefold(email)
               )
             )
           )
-          );
+      )
         return true;
-      } catch {
+      } catch{
         return false;
       }
-    },
-  },
-});
+    }
+  }
+})
